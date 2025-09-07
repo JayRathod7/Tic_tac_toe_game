@@ -56,83 +56,86 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Chokdi Mindu"),
-          elevation: 0.0,
-        ),
-        body: Container(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 300,
-                  width: 300,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  child: Card(
-                      color: Colors.deepPurple.shade400,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: GridView.builder(
-                          shrinkWrap: true,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 4.0,
-                            crossAxisSpacing: 4.0,
-                          ),
-                          itemCount: gameIcon.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                clickBox(index);
-                              },
-                              child: Container(
-                                margin: EdgeInsets.all(2),
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Icon(
-                                  gameIcon[index],
-                                  color: Colors.white,
-                                  size: gameIcon[index] == Icons.circle_rounded
-                                      ? 10
-                                      : 60,
-                                ),
-                                // child:Icons.circle_outlined,size: 70,),
-                              ),
-                            );
-                          },
-                        ),
-                      )),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Tic Tac Toe"),
+        elevation: 0.0,
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 300,
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                SizedBox(height: 30),
-                InkWell(
-                  borderRadius: BorderRadius.circular(50),
-                  onTap: restartGame,
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    child: Center(
-                      child: Icon(
-                        Icons.replay_outlined,
-                        size: 40.0,
-                        color: Colors.deepPurple,
+                child: Card(
+                  color: Colors.deepPurple.shade400,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 4.0,
+                        crossAxisSpacing: 4.0,
                       ),
+                      itemCount: gameIcon.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            clickBox(index);
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(2),
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(
+                              gameIcon[index],
+                              color: Colors.white,
+                              size: gameIcon[index] == Icons.circle_rounded
+                                  ? 10
+                                  : 60,
+                            ),
+                            // child:Icons.circle_outlined,size: 70,),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 30),
+              InkWell(
+                borderRadius: BorderRadius.circular(50),
+                onTap: restartGame,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  child: Center(
+                    child: Icon(
+                      Icons.replay_outlined,
+                      size: 40.0,
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   void winnerWinner() {
@@ -234,9 +237,7 @@ class _GameScreenState extends State<GameScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(text),
-        );
+        return AlertDialog(title: Text(text));
       },
     );
   }
